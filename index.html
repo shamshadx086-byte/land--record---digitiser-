@@ -29,4 +29,314 @@
   *{box-sizing:border-box;}
   html{ scroll-behavior:smooth; }
   html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+  }
+  ::selection{ background: var(--ledger); color:#fff; }
+  a{ color:inherit; }
+  img{ max-width:100%; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 44px; }
+  section{ padding:88px 0; }
+  h1,h2,h3{ font-family:'Source Serif 4', serif; font-weight:700; margin:0; color:var(--ink); }
+  .lede{ color:var(--ink-soft); font-size:15px; line-height:1.6; margin:0; }
+
+  header.topnav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,238,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--brass-line);
+  }
+  .topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px; }
+  .brandmark{ display:flex; align-items:baseline; gap:8px; }
+  .brandmark .name{ font-family:'Source Serif 4', serif; font-weight:700; font-size:19px; }
+  .brandmark .tag{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--rust); border:1px solid var(--rust-soft); padding:2px 6px; border-radius:20px; }
+  .navlinks{ display:flex; align-items:center; gap:28px; font-size:13.5px; }
+  .navlinks a{ text-decoration:none; color:var(--ink-soft); }
+  .navlinks a:hover{ color:var(--ledger); }
+  .btn{
+    all:unset; cursor:pointer; font-size:13.5px; font-weight:600;
+    padding:9px 18px; border-radius:var(--radius);
+    background:var(--ledger); color:#fff; display:inline-block;
+  }
+  .btn:hover{ background:var(--ledger-light); }
+  .btn.ghost{ background:transparent; color:var(--ledger); border:1px solid var(--brass-line); }
+  .btn.ghost:hover{ background: rgba(18,60,57,0.06); }
+  .btn.small{ padding:6px 12px; font-size:12.5px; }
+  .btn:disabled{ opacity:0.5; cursor:default; }
+
+  .hero{
+    padding:96px 0 70px;
+    background-image:
+      linear-gradient(var(--brass-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--brass-line) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  .hero .wrap{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap:56px; align-items:center; }
+  .ps-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ledger);
+    background:var(--paper-raised); border:1px solid var(--brass-line);
+    padding:5px 10px; border-radius:var(--radius); display:inline-block; margin-bottom:18px;
+  }
+  .hero h1{ font-size:42px; line-height:1.15; margin-bottom:18px; max-width:16ch; }
+  .hero .lede{ font-size:16px; max-width:52ch; margin-bottom:28px; }
+  .hero-ctas{ display:flex; gap:12px; }
+  .hero-panel{
+    background:var(--paper-raised); border:1px solid var(--brass-line); border-radius:var(--radius);
+    padding:26px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft);
+  }
+  .hero-panel .row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(156,134,84,0.22); }
+  .hero-panel .row:last-child{ border-bottom:none; }
+  .hero-panel .row b{ color:var(--ink); font-weight:600; }
+  .hero-panel .head{ font-family:'Source Serif 4', serif; font-size:15px; color:var(--ledger); margin-bottom:10px; font-weight:600; }
+
+  .problem .wrap{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:56px; }
+  .problem h2{ font-size:27px; margin-bottom:16px; max-width:14ch; }
+  .problem-points{ display:flex; flex-direction:column; gap:18px; }
+  .problem-points .p{ display:flex; gap:14px; }
+  .problem-points .dot{ width:8px; height:8px; border-radius:50%; background:var(--rust); margin-top:7px; flex-shrink:0; }
+  .problem-points p{ margin:0; color:var(--ink-soft); font-size:14.5px; line-height:1.6; }
+  .problem-points b{ color:var(--ink); }
+
+  .features{ background:var(--paper-raised); border-top:1px solid var(--brass-line); border-bottom:1px solid var(--brass-line); }
+  .features h2{ font-size:27px; margin-bottom:10px; }
+  .features .lede{ margin-bottom:40px; max-width:60ch; }
+  .feature-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:1px; background:var(--brass-line); border:1px solid var(--brass-line); }
+  .feature{ background:var(--paper-raised); padding:26px 24px; }
+  .feature .fnum{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--rust); margin-bottom:12px; display:block; }
+  .feature h3{ font-size:16.5px; margin-bottom:8px; }
+  .feature p{ margin:0; font-size:13.5px; color:var(--ink-soft); line-height:1.55; }
+
+  .steps h2{ font-size:27px; margin-bottom:40px; }
+  .step-row{ display:grid; grid-template-columns: repeat(4,1fr); gap:22px; }
+  .step{ border-top:2px solid var(--ledger); padding-top:16px; }
+  .step .snum{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--brass); }
+  .step h3{ font-size:15.5px; margin:8px 0; }
+  .step p{ margin:0; font-size:13px; color:var(--ink-soft); line-height:1.55; }
+
+  .console{ background:var(--ledger); color:#EDEEE2; }
+  .console h2{ color:#fff; font-size:27px; margin-bottom:8px; }
+  .console .lede{ color:#B7C9BE; margin-bottom:36px; max-width:60ch; }
+  .tabbar{ display:flex; gap:8px; margin-bottom:26px; flex-wrap:wrap; }
+  .tabbtn{
+    all:unset; cursor:pointer; font-size:13px; padding:9px 16px; border-radius:20px;
+    border:1px solid rgba(237,238,226,0.28); color:#D7E0D6;
+  }
+  .tabbtn.active{ background:#EDEEE2; color:var(--ledger); font-weight:600; border-color:transparent; }
+  .panel{ display:none; background:var(--paper-raised); color:var(--ink); border-radius:var(--radius); padding:28px; }
+  .panel.active{ display:block; }
+
+  .dropzone{
+    border:1.5px dashed var(--brass); border-radius:var(--radius); padding:46px 20px; text-align:center;
+    background: repeating-linear-gradient(135deg, rgba(156,134,84,0.05) 0 10px, transparent 10px 20px);
+    cursor:pointer; transition: border-color .15s ease, background .15s ease;
+  }
+  .dropzone:hover, .dropzone.drag{ border-color:var(--ledger); background: rgba(18,60,57,0.05); }
+  .dropzone h3{ font-family:'Source Serif 4', serif; font-size:19px; margin:0 0 6px; }
+  .dropzone p{ color:var(--ink-soft); font-size:13.5px; margin:0 0 16px; }
+  .lang-row{ display:flex; gap:14px; margin-top:18px; justify-content:center; flex-wrap:wrap; }
+  .lang-pill{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; border:1px solid var(--brass-line);
+    padding:4px 10px; border-radius:20px; color:var(--ink-soft); cursor:pointer; user-select:none;
+  }
+  .lang-pill.on{ background:var(--ledger); color:#fff; border-color:var(--ledger); }
+  .hint{ font-size:12px; color:var(--ink-soft); margin-top:8px; }
+
+  .progress-wrap{ margin-top:22px; }
+  .progress-label{ display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink-soft); margin-bottom:6px; font-family:'IBM Plex Mono', monospace; }
+  .progress-track{ height:6px; background:rgba(0,0,0,0.08); border-radius:6px; overflow:hidden; }
+  .progress-fill{ height:100%; background:var(--rust); width:0%; transition:width .2s ease; }
+
+  .extract-grid{ display:grid; grid-template-columns: 1.1fr 1.5fr; gap:22px; margin-top:22px; }
+  .doc-preview{ border:1px solid var(--brass-line); border-radius:var(--radius); overflow:hidden; background:#fff; }
+  .doc-preview img{ width:100%; display:block; }
+  .field-list{ display:flex; flex-direction:column; gap:10px; }
+  .field-row{
+    display:grid; grid-template-columns: 150px 1fr 70px; align-items:center; gap:10px;
+    padding:9px 10px; border:1px solid var(--brass-line); border-radius:var(--radius); background:#fff;
+  }
+  .field-row label{ font-size:12px; color:var(--ink-soft); }
+  .field-row input{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; border:none; background:transparent;
+    color:var(--ink); padding:2px 0; border-bottom:1px solid transparent; width:100%;
+  }
+  .field-row input:focus{ outline:none; border-bottom:1px solid var(--ledger); }
+  .conf{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-align:right; padding:2px 6px; border-radius:10px; }
+  .conf.high{ color:var(--good); background:var(--good-soft); }
+  .conf.mid{ color:var(--warn); background:var(--warn-soft); }
+  .conf.low{ color:var(--rust); background:var(--rust-soft); }
+  .action-row{ display:flex; gap:10px; margin-top:18px; justify-content:flex-end; }
+
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  th{
+    text-align:left; font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:11px;
+    color:var(--ink-soft); padding:8px 10px; border-bottom:1px solid var(--brass-line);
+  }
+  td{ padding:11px 10px; border-bottom:1px solid rgba(156,134,84,0.18); vertical-align:middle; }
+  tr:hover td{ background: rgba(18,60,57,0.03); }
+  .status-chip{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; padding:3px 9px; border-radius:20px; display:inline-block; }
+  .status-chip.verified{ background:var(--good-soft); color:var(--good); }
+  .status-chip.pending{ background:var(--warn-soft); color:var(--warn); }
+  .status-chip.review{ background:var(--rust-soft); color:var(--rust); }
+  .empty{ padding:40px 10px; text-align:center; color:var(--ink-soft); font-size:13.5px; }
+
+  .stat-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-bottom:24px; }
+  .stat{ background:#fff; border:1px solid var(--brass-line); border-radius:var(--radius); padding:18px 20px; }
+  .stat .n{ font-family:'Source Serif 4', serif; font-size:32px; font-weight:700; color:var(--ledger); line-height:1; }
+  .stat .l{ font-size:12px; color:var(--ink-soft); margin-top:8px; }
+  .chart-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:18px; }
+  .chart-card{ background:#fff; border:1px solid var(--brass-line); border-radius:var(--radius); padding:20px; }
+  .chart-card h3{ font-size:16px; margin:0 0 14px; }
+
+  .psdetail .inner{ display:grid; grid-template-columns: 1fr 1fr; border:1px solid var(--brass-line); background:var(--paper-raised); border-radius:var(--radius); overflow:hidden; }
+  .psdetail .col{ padding:30px 34px; }
+  .psdetail .col + .col{ border-left:1px solid var(--brass-line); }
+  .psdetail h2{ font-size:22px; margin-bottom:14px; }
+  .psrow{ display:flex; justify-content:space-between; gap:16px; padding:10px 0; border-bottom:1px solid rgba(156,134,84,0.2); font-size:13.5px; }
+  .psrow span:first-child{ color:var(--ink-soft); }
+  .psrow span:last-child{ text-align:right; font-weight:500; }
+
+  footer{ background:var(--ledger); color:#B7C9BE; padding:44px 0 30px; font-size:12.5px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; }
+  footer .fbrand{ font-family:'Source Serif 4', serif; color:#fff; font-size:17px; margin-bottom:6px; }
+  footer .fcol h4{ color:#fff; font-size:12px; margin:0 0 10px; font-weight:600; }
+  footer .fcol a{ display:block; color:#B7C9BE; text-decoration:none; margin-bottom:6px; }
+  footer .fcol a:hover{ color:#fff; }
+  .fine{ margin-top:30px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.12); font-size:11.5px; color:#7E9C90; }
+
+  @media (max-width: 980px){
+    .wrap{ padding:0 22px; }
+    .hero .wrap, .problem .wrap{ grid-template-columns:1fr; }
+    .psdetail .inner{ grid-template-columns:1fr; }
+    .feature-grid{ grid-template-columns:1fr 1fr; }
+    .step-row{ grid-template-columns:1fr 1fr; }
+    .navlinks{ display:none; }
+    .extract-grid, .chart-grid, .stat-grid{ grid-template-columns:1fr; }
+    .psdetail .col + .col{ border-left:none; border-top:1px solid var(--brass-line); }
+  }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap">
+    <div class="brandmark">
+      <span class="name">Bhoomi Setu</span>
+      <span class="tag">SIH 26018</span>
+    </div>
+    <nav class="navlinks">
+      <a href="#problem">The Problem</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it Works</a>
+      <a href="#ps">Problem Statement</a>
+      <a href="#console" class="btn small">Open Tool</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="ps-tag">Ministry of Rural Development · Dept of Land Resources</span>
+      <h1>Turn decades of paper land records into clean, verified data.</h1>
+      <p class="lede">Bhoomi Setu reads scanned registers, khatauni pages, and legacy PDFs — in English and Hindi — and turns them into structured, validated land records ready for LRMS, DILRMP, and GIS systems.</p>
+      <div class="hero-ctas">
+        <a href="#console" class="btn">Try the digitizer</a>
+        <a href="#how" class="btn ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="head">Why legacy digitization fails today</div>
+      <div class="row"><span>Manual data entry</span><b>Slow, inconsistent</b></div>
+      <div class="row"><span>Handwritten registers</span><b>High error rate</b></div>
+      <div class="row"><span>Multiple regional scripts</span><b>Poor OCR coverage</b></div>
+      <div class="row"><span>No confidence tracking</span><b>Silent mistakes</b></div>
+      <div class="row"><span>Disconnected systems</span><b>No LRMS/DILRMP link</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div>
+      <h2>Land records are the backbone of ownership, tax, and dispute resolution — but most still live on paper.</h2>
+      <p class="lede">Registers, cadastral maps, and mutation records sit in handwritten form across village and tehsil offices, in multiple Indian languages, with faded ink and damaged pages. Digitizing them by hand is slow, costly, and error-prone.</p>
+    </div>
+    <div class="problem-points">
+      <div class="p"><span class="dot"></span><p><b>Poor source quality.</b> Faded text, damaged pages, and inconsistent formats make standard OCR unreliable.</p></div>
+      <div class="p"><span class="dot"></span><p><b>Multilingual content.</b> Records mix Hindi, regional scripts, and English within the same document.</p></div>
+      <div class="p"><span class="dot"></span><p><b>No verification trail.</b> Manual entry has no confidence signal — errors surface only after they cause disputes.</p></div>
+      <div class="p"><span class="dot"></span><p><b>Siloed systems.</b> Digitized data rarely connects cleanly to LRMS, DILRMP, or GIS platforms already in use.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <h2>What the platform does</h2>
+    <p class="lede">Every capability maps directly to a requirement in the problem statement — from extraction to governance-ready dashboards.</p>
+    <div class="feature-grid">
+      <div class="feature"><span class="fnum">01</span><h3>Multilingual OCR</h3><p>Reads printed and handwritten text across major Indian languages and English in the same document.</p></div>
+      <div class="feature"><span class="fnum">02</span><h3>Field classification</h3><p>Automatically sorts extracted text into owner, khasra, khata, survey number, village, tehsil, and district fields.</p></div>
+      <div class="feature"><span class="fnum">03</span><h3>Confidence scoring</h3><p>Every field gets a score, so uncertain extractions are flagged instead of silently accepted.</p></div>
+      <div class="feature"><span class="fnum">04</span><h3>Human-in-the-loop review</h3><p>Low-confidence fields route to a verification screen where staff can correct values before saving.</p></div>
+      <div class="feature"><span class="fnum">05</span><h3>Progress dashboards</h3><p>Track documents processed, average accuracy, and pending verification by field and by status.</p></div>
+      <div class="feature"><span class="fnum">06</span><h3>Integration-ready</h3><p>Structured output is designed to map directly onto LRMS, DILRMP, and GIS data schemas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="how">
+  <div class="wrap">
+    <h2>How a document moves through the system</h2>
+    <div class="step-row">
+      <div class="step"><span class="snum">Step 01</span><h3>Upload</h3><p>Scan or photograph a register page, khatauni, or legacy PDF and upload it directly.</p></div>
+      <div class="step"><span class="snum">Step 02</span><h3>Extract</h3><p>OCR reads the document and structured fields are pulled out automatically.</p></div>
+      <div class="step"><span class="snum">Step 03</span><h3>Verify</h3><p>Fields below the confidence threshold are flagged for a quick human check before saving.</p></div>
+      <div class="step"><span class="snum">Step 04</span><h3>Register &amp; report</h3><p>Verified records land in the register and roll up into the progress dashboard.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="console" id="console">
+  <div class="wrap">
+    <h2>Try the digitization console</h2>
+    <p class="lede">This runs fully in your browser — upload a document below to see extraction, verification, and reporting in action.</p>
+
+    <div class="tabbar">
+      <button class="tabbtn active" data-panel="upload">01 · Digitize Record</button>
+      <button class="tabbtn" data-panel="records">02 · Record Register</button>
+      <button class="tabbtn" data-panel="dashboard">03 · Progress Dashboard</button>
+    </div>
+
+    <div class="panel active" id="panel-upload">
+      <div class="dropzone" id="dropzone">
+        <h3>Drop a document here</h3>
+        <p>Handwritten registers, khatauni scans, or printed PDFs — JPG or PNG</p>
+        <input type="file" id="fileInput" accept="image/*" style="display:none" />
+        <button class="btn" id="browseBtn">Choose a file</button>
+        <div class="lang-row" id="langRow">
+          <span class="lang-pill on" data-lang="eng">English</span>
+          <span class="lang-pill" data-lang="hin">हिन्दी</span>
+        </div>
+        <div class="hint">Select the script used in the document — the reader loads the matching language model.</div>
+      </div>
+
+      <div class="progress-wrap" id="progressWrap" style="display:none;">
+        <div class="progress-label"><span id="progressStage">Reading document…</span><span id="progressPct">0%</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+      <div id="resultCard" style="display:none; margin-top:22px;">
+        <h3 style="font-size:19px; margin:0 0 4px;">Extracted fields</h3>
+        <p class="lede" style="margin-bottom:18px;">Check each field against the source image. Low-confidence fields are marked — correct them before saving to the register.</p>
+        <div class="extract-grid">
+          <div class="doc-preview"><img id="previewImg" src="" alt="Uploaded document preview" /></div>
+          <div>
+            <div class="field-list" id="fieldList"></div>
+            <div class="action-row">
+              <button class="btn ghost small" id="discardBtn">Discard</button>
+              <button class="btn small" id="saveBtn">Sav
   
